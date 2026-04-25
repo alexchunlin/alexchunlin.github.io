@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alex Chunlin — Robotics Hardware</title>
+  <meta name="description" content="Alex Chunlin builds robotics motor controller boards and educational platforms that make advanced robotics accessible to everyone." />
+
+  <!-- Google Fonts: Space Grotesk (headings) + Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ── Navigation ──────────────────────────────────────────── -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo">
+        <span class="nav-logo-mark">AC</span>
+        <span class="nav-logo-text">Alex Chunlin</span>
+      </a>
+      <div class="nav-links">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="https://www.youtube.com/@EveryFlavorRobot" target="_blank" rel="noopener" class="nav-link nav-link-yt">YouTube</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ── Hero ────────────────────────────────────────────────── -->
+    <section class="hero" id="home">
+      <div class="hero-grid-bg" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div class="hero-eyebrow">Hardware Engineer · Robotics</div>
+        <h1 class="hero-name">Alex<br/>Chunlin</h1>
+        <p class="hero-tagline">
+          Making advanced robotics accessible —<br class="hero-break"/>
+          one board at a time.
+        </p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn-primary">View Projects</a>
+          <a href="#about" class="btn-ghost">About Me</a>
+        </div>
+      </div>
+      <a href="#about" class="hero-scroll" aria-label="Scroll down">
+        <span class="hero-scroll-line"></span>
+        <span class="hero-scroll-label">scroll</span>
+      </a>
+    </section>
+
+    <!-- ── About ────────────────────────────────────────────────── -->
+    <section class="section about-section" id="about">
+      <div class="container">
+        <div class="about-layout">
+          <div class="about-headshot">
+            <img src="robot-pictures/headshot.png" alt="Alex Chunlin" loading="lazy" />
+          </div>
+          <div id="about-content" class="about-content prose">
+            <!-- loaded from content/about.md -->
+            <div class="skeleton-block">
+              <div class="skeleton skeleton-h1"></div>
+              <div class="skeleton skeleton-p"></div>
+              <div class="skeleton skeleton-p short"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Robot Gallery ────────────────────────────────────────── -->
+    <section class="section gallery-section" id="gallery">
+      <div class="gallery-container">
+        <div class="section-header">
+          <div class="section-label">In the Wild</div>
+          <h2 class="section-title">Robot Gallery</h2>
+          <p class="section-subtitle">
+            A look at the builds, experiments, and deployments — from the workbench to the world.
+          </p>
+        </div>
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="robot-pictures/lightrobot.jpeg" alt="Light robot" loading="lazy" />
+          </div>
+          <div class="gallery-item">
+            <img src="robot-pictures/Camera.png" alt="Camera setup" loading="lazy" />
+          </div>
+          <div class="gallery-item">
+            <img src="robot-pictures/PXL_20230101_204345922.jpg" alt="Robot build" loading="lazy" />
+          </div>
+          <div class="gallery-item">
+            <img src="robot-pictures/plink%20cmu%20examples.png" alt="Plink CMU examples" loading="lazy" />
+          </div>
+          <div class="gallery-item">
+            <img src="robot-pictures/plink_CMU_project_examples.jpg" alt="Plink CMU project examples" loading="lazy" />
+          </div>
+          <div class="gallery-item">
+            <img src="robot-pictures/Screenshot-2026-04-03-at-5.31.00-PM.png" alt="Screenshot April 3" loading="lazy" />
+          </div>
+          <div class="gallery-item">
+            <img src="robot-pictures/Screenshot-2026-04-03-at-5.36.14-PM-Large.jpeg" alt="Screenshot April 3 large" loading="lazy" />
+          </div>
+          <div class="gallery-item">
+            <img src="robot-pictures/Screenshot-2026-04-03-at-5.38.25-PM-Large.jpeg" alt="Screenshot April 3 large 2" loading="lazy" />
+          </div>
+          <div class="gallery-item">
+            <img src="robot-pictures/Screenshot-2026-04-17-at-1.16.22-AM-Medium.jpeg" alt="Screenshot April 17" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Projects ─────────────────────────────────────────────── -->
+    <section class="section projects-section" id="projects">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Work</div>
+          <h2 class="section-title">Projects</h2>
+          <p class="section-subtitle">
+          A progression of motor control boards and educational platforms —
+          from Kickstarter to Carnegie Mellon to research labs in Europe.
+          </p>
+        </div>
+        <div id="projects-container" class="projects-list">
+          <!-- loaded from content/projects/*.md -->
+          <div class="skeleton-block">
+            <div class="skeleton skeleton-card"></div>
+            <div class="skeleton skeleton-card"></div>
+            <div class="skeleton skeleton-card"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ───────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="footer-mark">AC</span>
+      <p class="footer-text">
+        Built by Alex Chunlin · Hardware for everyone
+      </p>
+      <p class="footer-sub">Motor controllers · Educational platforms · Open robotics</p>
+    </div>
+  </footer>
+
+  <!-- marked.js from CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- main logic -->
+  <script src="main.js"></script>
+
+</body>
+</html>
