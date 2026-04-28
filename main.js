@@ -55,32 +55,62 @@ async function loadAbout() {
 
 // ── Projects section ─────────────────────────────────────────
 async function loadProjects() {
-  const container = document.getElementById('projects-container');
+  try {
+    const container = document.getElementById('projects-container');
 
-  const fetches = PROJECT_FILES.map((file, index) =>
-    fetch(file)
-      .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.text(); })
-      .then(text => ({ text, index, file }))
-      .catch(err => ({ error: err, index, file }))
-  );
+    const fetches = PROJECT_FILES.map((file, index) =>
+      fetch(file)
+        .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.text(); })
+        .then(text => ({ text, index, file }))
+        .catch(err => ({ error: err, index, file }))
+    );
 
-  const results = await Promise.all(fetches);
+    const results = await Promise.all(fetches);
 
-  container.innerHTML = results
-    .map(result => renderProjectEntry(result))
-    .join('');
+    container.innerHTML = results
+      .map(result => renderProjectEntry(result))
+      .join('');
 
-  // Tag KiCanvas links with a special class for button styling
-  container.querySelectorAll('.project-card-body a').forEach(a => {
-    if (a.textContent.includes('KiCanvas')) {
-      a.classList.add('kicanvas-link');
-      a.setAttribute('target', '_blank');
-      a.setAttribute('rel', 'noopener');
-    }
-  });
+    // Replace KiCanvas links with interactive embeds
+    container.querySelectorAll('.project-card-body a').forEach(a => {
+      if (a.textContent.includes('KiCanvas')) {
+        try {
+          const url = new URL(a.href);
+          const repoUrl = url.searchParams.get('repo');
+          if (repoUrl) {
+            const embedContainer = document.createElement('div');
+            embedContainer.className = 'kicanvas-embed-wrapper';
+            
+            const embed = document.createElement('kicanvas-embed');
+            embed.setAttribute('src', repoUrl);
+            embed.setAttribute('controls', 'basic');
+            
+            const fullLink = document.createElement('a');
+            fullLink.href = a.href;
+            fullLink.className = 'kicanvas-full-link';
+            fullLink.target = '_blank';
+            fullLink.rel = 'noopener';
+            fullLink.innerHTML = '<span>Open Full KiCanvas</span>';
+            
+            embedContainer.appendChild(embed);
+            embedContainer.appendChild(fullLink);
+            
+            // Use parentNode.replaceChild for better compatibility
+            if (a.parentNode) {
+              a.parentNode.replaceChild(embedContainer, a);
+            }
+          }
+        } catch (e) {
+          console.error('Failed to parse KiCanvas URL:', e);
+        }
+      }
+    });
 
-  // Observe cards for scroll-in animation
-  observeCards();
+    // Observe cards (no longer needed with CSS animation, but keeping for compatibility if needed elsewhere)
+    // observeCards(); 
+  } catch (err) {
+    console.error('[projects] load error:', err);
+  }
 }
 
 // ── Metadata extraction ──────────────────────────────────────
@@ -237,7 +267,7 @@ function observeCards() {
         }
       });
     },
-    { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+    { threshold: 0 }
   );
 
   cards.forEach(card => io.observe(card));
